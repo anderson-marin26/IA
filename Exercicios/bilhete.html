@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bilhete Inteligente</title>
+</head>
+<body>
+	<input id="money" type="number" placeholder="Digite o valor pago..." />
+	<input type="button" value="PAGAR" onClick="receive()" />
+
+	<script type="text/javascript">
+		function receive()
+		{
+			var total = 0;
+			var fee = 3.80;
+			var ticket_qtty = 0;
+			var money = parseFloat(document.getElementById('money').value);
+
+			if(money == fee)
+			{
+				alert('Valor Suficiente');
+			}
+			else if(money < fee)
+			{
+				total = fee - money;
+				alert('Valor insuficiente faltam ' + total);
+			}
+			else
+			{
+				while(money > fee)
+				{
+					ticket_qtty++;
+					money = money - 3.80;
+				}
+
+				money = money.toFixed(2);
+
+				alert('Voce pode comprar ' + ticket_qtty + ' passagens, com o troco de ' + money);
+			}
+		}
+	</script>
+</body>
+</html>
