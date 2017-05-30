@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pagina do professor</title>
+	<script type="text/javascript">
+		function getReport()
+		{
+			var students = JSON.parse(localStorage.getItem("students"));
+			var below_5 = 0;
+
+			if(students != null)
+			{
+				for(student in students)
+				{
+					if(students[student].grade < 5)
+					{
+						below_5++;
+					}
+
+					document.getElementById("student_info").innerHTML = document.getElementById("student_info").innerHTML +  students[student].name + '<br>Certas:' + students[student].right_answers
+					+  '&nbsp;Erradas: ' + students[student].wrong_answers + '<br>Nota: ' + students[student].grade + '<hr>';
+				}
+			}
+		}
+	</script>
+</head>
+<body onload="getReport()">
+	<div id="student_info" style="text-align: center">
+	</div>
+	<div id="below_5">
+		<hr>
+		<h2 style="text-align: center">
+			Alunos com nota abaixo de 0
+		</h2>
+	</div>
+</body>
+</html>
